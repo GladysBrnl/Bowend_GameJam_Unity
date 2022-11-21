@@ -11,6 +11,7 @@ public class WallHUD : MonoBehaviour
 
     Wall wall;
 
+
     void Start()
     {
         healthBar = GetComponent<Image>();
@@ -18,7 +19,6 @@ public class WallHUD : MonoBehaviour
         health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         healthBar.fillAmount = health / maxHealth;

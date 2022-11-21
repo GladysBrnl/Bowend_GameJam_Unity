@@ -20,12 +20,6 @@ public class Wall : MonoBehaviour
 
         FindObjectOfType<WallHUD>().LostLife(damage);
 
-        if (life <= 0)
-        {
-            gameManager.GameOver();
-        }
-
-        Debug.Log(life);
 
 
     }

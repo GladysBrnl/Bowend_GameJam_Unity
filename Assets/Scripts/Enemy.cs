@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 9;
     [SerializeField] public Transform target;
-    private int waypointIndex = 0;
-
+    [SerializeField] public int healthEnemy = 2;
     [SerializeField] int damage = 1;
+    [SerializeField] GameObject explostionPrefab;
 
 
     GameManager gameManager;
@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
     {
     
     }
+
+
 
     void Update()
     {
@@ -61,6 +63,9 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             gameManager.enemies.Remove(this);
+
+            GameObject explo = Instantiate(explostionPrefab, gameManager.fxContainer);
+            explo.transform.position = transform.position;
 
             gameManager.AddScore();
 

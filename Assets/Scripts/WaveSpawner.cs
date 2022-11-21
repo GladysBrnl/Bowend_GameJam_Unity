@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        waveCountdownTimer.text = Mathf.Round(countdown).ToString();
+        waveCountdownTimer.text = Mathf.Round(countWave).ToString();
     }
 
     IEnumerator SpawnWave()

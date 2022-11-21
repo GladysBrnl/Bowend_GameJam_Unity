@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnContainer;
     public Transform fxContainer;
 
+    private bool gameEnded = false;
 
     [SerializeField] List<Transform> spawns = new List<Transform>();
     //Liste des ennemis
@@ -24,11 +25,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject giantPrefab;
+    [SerializeField] GameObject scoreExplostionPrefab;
 
     [SerializeField] private Text txtScore;
 
     public int randomIndex;
     public int score = 0;
+
+    WallHUD wallHud;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +40,22 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("SpawnEnemyToRandomPosition", 4f, 4f);
         txtScore.text = score.ToString();
         txtScore.gameObject.SetActive(true);
+        wallHud = FindObjectOfType<WallHUD>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameEnded)
+        {
+            return;
+        }
+
+        float health = wallHud.health;
+        if(health <= 0)
+        {
+            EndGame();
+        }
     }
 
     public Vector3 SpawnEnemyToRandomPosition()
@@ -51,7 +65,6 @@ public class GameManager : MonoBehaviour
         Transform spawn = spawns[randomIndex];
 
         return spawn.position;
-        //SpawnGianty(spawn.position);
 
     }
     public void SpawnEnemy(Vector3 pos)
@@ -77,25 +90,18 @@ public class GameManager : MonoBehaviour
         }
         enemies.Add(e.GetComponent<Enemy>());
     }
-    //void SpawnGianty(Vector3 pos)
-    //{
-    //    //Instancier l'ennemi
-    //    GameObject e = Instantiate(giantPrefab, enemyContainer);
-    //    //Positionner l'ennemi
-    //    e.transform.position = pos;
-    //    e.GetComponent<Giant>().target = wall.transform;
-    //    //Ajout de l'ennemi dans la liste
-    //    giant.Add(e.GetComponent<Giant>());
-    //}
 
     public void AddScore()
     {
         score++;
         txtScore.text = score.ToString();
+       
+        GameObject explo = Instantiate( scoreExplostionPrefab, fxContainer);
+       
     }
-    public void GameOver()
+   void EndGame()
     {
-        enabled = false;
-
+        gameEnded = true;
+        Debug.Log("Game Over!");
     }
 }

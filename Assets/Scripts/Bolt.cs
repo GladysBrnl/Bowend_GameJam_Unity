@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Bolt : MonoBehaviour
 {
-    float bulletSpeed = 35;
+    [SerializeField] float bulletSpeed = 35;
+
 
     // [SerializeField] GameObject fx2;
 
     GameManager gameManager;
+    Enemy enemy;
 
     private void Awake()
     {
@@ -33,7 +35,8 @@ public class Bolt : MonoBehaviour
 
             //Destroy(Impact, 2);
             //Debug.Log("Target collison");
-            Destroy(gameObject);
+            Enemy e = enemy.GetComponent<Enemy>();
+            
         }
 
     }

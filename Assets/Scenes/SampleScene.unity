@@ -1306,7 +1306,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896789380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.1049, y: 2.1049, z: 2.1049}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1315,7 +1315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330, y: 887}
+  m_AnchoredPosition: {x: 359, y: 905}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896789382
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 70
@@ -1980,7 +1980,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742668326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00009860739}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2816, y: 2.2816002, z: 2.2816002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1989,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259002, y: 869.0001}
+  m_AnchoredPosition: {x: -0.000015259002, y: 788}
   m_SizeDelta: {x: 102.33, y: 70.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742668328
@@ -2014,10 +2014,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
-    m_FontStyle: 1
+    m_FontSize: 50
+    m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
+    m_MinSize: 5
     m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -2097,8 +2097,9 @@ MonoBehaviour:
   wallMilieu: {fileID: 1441578656}
   wallDroite: {fileID: 975865551}
   wallGauche: {fileID: 1520079304}
-  enemyPrefab: {fileID: 4602631841763390127, guid: 2c822dff64750954f90cf1dbee398bc8, type: 3}
+  enemyPrefab: {fileID: 4236163488551302974, guid: 5ade0adca5b02794a9be15e669ced420, type: 3}
   giantPrefab: {fileID: 7323425646738474120, guid: a5b3703ffe7d9df4b9439c409fa7b8fb, type: 3}
+  scoreExplostionPrefab: {fileID: 4387330839117087763, guid: ea463a3ff7ff94143a36e1f4dfa0e5a2, type: 3}
   txtScore: {fileID: 896789382}
   randomIndex: 0
   score: 0
@@ -2114,11 +2115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fcfc1748361fc498c601523aea4f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 9216774138387078525, guid: 2c822dff64750954f90cf1dbee398bc8, type: 3}
+  enemyPrefab: {fileID: 8862725929142622444, guid: 5ade0adca5b02794a9be15e669ced420, type: 3}
   timeBetweenWaves: 2.5
   spawnContainer: {fileID: 1175897158}
   waveCountdownTimer: {fileID: 1742668328}
-  maxWave: 2
+  maxWave: 4
 --- !u!1 &2140839438 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3307514089955930328, guid: 75a54967a7c838c4d9ff61ea9190786d, type: 3}
@@ -2156,7 +2157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143145388}
   m_LocalRotation: {x: -0, y: 0.021849522, z: -0, w: 0.99976134}
-  m_LocalPosition: {x: 8.52, y: 0.25, z: 0.84}
+  m_LocalPosition: {x: 8.5, y: 0.25, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 23.673}
   m_ConstrainProportionsScale: 0
   m_Children: []
