@@ -56,6 +56,9 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             gameManager.enemies.Remove(this);
 
+            GameObject explo = Instantiate(explostionPrefab, gameManager.fxContainer);
+            explo.transform.position = transform.position;
+
         }
 
         if (collision.gameObject.tag == "Bolt")
