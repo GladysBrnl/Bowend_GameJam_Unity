@@ -8,28 +8,23 @@ public class GameOver : MonoBehaviour
 {
     public Text scoreTexte;
 
+    public SceneFader sceneFader;
+
+    public string menuSceneName = "MainMenu";
+
     void OnEnable()
     {
         scoreTexte.text = GameManager.scoreFin.ToString();
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
-        Debug.Log("Direction menu principal");
+        sceneFader.FadeTo(menuSceneName);
     }
 }
