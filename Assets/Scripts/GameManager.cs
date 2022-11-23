@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Transform> spawns = new List<Transform>();
     //Liste des ennemis
     [SerializeField] public List<Enemy> enemies = new List<Enemy>();
-    //[SerializeField] public List<Giant> giant = new List<Giant>();
     [SerializeField] GameObject player;
 
     [SerializeField] GameObject wallMilieu;
@@ -24,13 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject wallGauche;
 
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] GameObject giantPrefab;
     [SerializeField] GameObject scoreExplostionPrefab;
 
     [SerializeField] private Text txtScore;
 
+    public GameObject gameOverUI;
+
     public int randomIndex;
     public int score = 0;
+    public static int scoreFin ;
 
     WallHUD wallHud;
 
@@ -41,11 +42,14 @@ public class GameManager : MonoBehaviour
         txtScore.text = score.ToString();
         txtScore.gameObject.SetActive(true);
         wallHud = FindObjectOfType<WallHUD>();
+
+    
     }
 
     // Update is called once per frame
     void Update()
     {
+      
         if (gameEnded)
         {
             return;
@@ -95,6 +99,8 @@ public class GameManager : MonoBehaviour
     {
         score++;
         txtScore.text = score.ToString();
+
+        scoreFin = score;
        
         GameObject explo = Instantiate( scoreExplostionPrefab, fxContainer);
        
@@ -102,6 +108,6 @@ public class GameManager : MonoBehaviour
    void EndGame()
     {
         gameEnded = true;
-        Debug.Log("Game Over!");
+        gameOverUI.SetActive(true);
     }
 }

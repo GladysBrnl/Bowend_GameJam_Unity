@@ -366,6 +366,7 @@
 "Assets/Scripts/Bolt.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/GameOver.cs"
 "Assets/Scripts/Giant.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Wall.cs"
