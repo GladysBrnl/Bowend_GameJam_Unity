@@ -34,11 +34,13 @@ public class GameManager : MonoBehaviour
     public static int scoreFin ;
 
     WallHUD wallHud;
+    Wave wave;
+    Wave enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemyToRandomPosition", 4f, 4f);
+        //InvokeRepeating("SpawnEnemyToRandomPosition", 4f, 4f);
         txtScore.text = score.ToString();
         txtScore.gameObject.SetActive(true);
         wallHud = FindObjectOfType<WallHUD>();
@@ -68,29 +70,31 @@ public class GameManager : MonoBehaviour
         randomIndex = Random.Range(0, spawns.Count);
         Transform spawn = spawns[randomIndex];
 
+
         return spawn.position;
+
 
     }
     public void SpawnEnemy(Vector3 pos)
     {
-        GameObject e = Instantiate(enemyPrefab, enemyContainer);
+        GameObject e = Instantiate(wave.enemy);
         e.transform.position = pos;
 
-        if(randomIndex == 0)
+        if (randomIndex == 0)
         {
             e.GetComponent<Enemy>().SetTarget(wallMilieu.transform);
-            Debug.Log("randomIndex = "+randomIndex);
+            Debug.Log("randomIndex = " + randomIndex);
         }
         else if (randomIndex == 1)
         {
-            Debug.Log("randomIndex = " + randomIndex);
             e.GetComponent<Enemy>().SetTarget(wallGauche.transform);
+            Debug.Log("randomIndex = " + randomIndex);
         }
         else
         {
             e.GetComponent<Enemy>().SetTarget(wallDroite.transform); ;
             Debug.Log("randomIndex = " + randomIndex);
-            
+
         }
         enemies.Add(e.GetComponent<Enemy>());
     }
@@ -109,5 +113,10 @@ public class GameManager : MonoBehaviour
     {
         gameEnded = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void WinLevel()
+    {
+
     }
 }

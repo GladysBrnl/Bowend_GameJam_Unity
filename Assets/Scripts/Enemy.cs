@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 9;
+
     [SerializeField] public Transform target;
     [SerializeField] public int healthEnemy = 2;
     [SerializeField] int damage = 1;
@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
 
 
     GameManager gameManager;
-
     Wall wall;
 
 
@@ -27,18 +26,10 @@ public class Enemy : MonoBehaviour
         wall = FindObjectOfType<Wall>();
     }
 
-    private void Start()
-    {
-    
-    }
-
-
-
     void Update()
     {
         GetComponent<NavMeshAgent>().destination = target.position;
    
-
     }
 
     public void SetTarget(Transform tg)
@@ -53,6 +44,9 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             wall.DoDamage(damage);
+
+            WaveSpawner.EnemiesAlive--;
+
             Destroy(gameObject);
             gameManager.enemies.Remove(this);
 
@@ -64,6 +58,9 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bolt")
         {
             Destroy(collision.gameObject);
+
+            WaveSpawner.EnemiesAlive--;
+
             Destroy(gameObject);
             gameManager.enemies.Remove(this);
 
