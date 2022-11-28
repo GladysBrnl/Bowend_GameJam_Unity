@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class WaveSpawner : MonoBehaviour
 
     private int countWave = 0;
     private float countdown = 2f;
-    private int waveIndex = 0;
+    public int waveIndex = 0;
     public int randomIndex;
 
     //[SerializeField] GameObject wallMilieu;
@@ -56,7 +55,9 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        Debug.Log("Spawn " + waveIndex);
         Wave wave = waves[waveIndex];
+        FindObjectOfType<GameManager>().wave = wave;
 
         for (int i = 0; i < wave.count; i++)
         {

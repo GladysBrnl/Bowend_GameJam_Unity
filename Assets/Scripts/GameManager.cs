@@ -28,14 +28,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text txtScore;
 
     public GameObject gameOverUI;
+    public GameObject victoryUI;
 
     public int randomIndex;
     public int score = 0;
     public static int scoreFin ;
 
     WallHUD wallHud;
-    Wave wave;
-    Wave enemy;
+    public Wave wave;
+  
+
+    WaveSpawner WaveSpawner;
+
+    private void Awake()
+    {
+        WaveSpawner = FindObjectOfType<WaveSpawner>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +70,12 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        if ( WaveSpawner.waveIndex > 4)
+        {
+            WinLevel();
+        }
+
     }
 
     public Vector3 SpawnEnemyToRandomPosition()
@@ -117,6 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
     {
-
+        gameEnded = true;
+        victoryUI.SetActive(true);
     }
 }
